@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Putting the I in AI — SLC Tutor Training Day 2026</title>
+<meta name="description" content="Agenda for the 2026 SLC Tutor Training Retreat: Day 1 in person at Lake Worth (August 11) and Day 2 on Microsoft Teams (August 12).">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBF9F0;
+    --panel:#FFFFFF;
+    --ink:#182615;
+    --deep:#0B3D1B;
+    --muted:#3D3A2E;
+    --green:#439944;
+    --yellow:#EBD245;
+    --line:#D8D3C0;
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation:none!important;transition:none!important}}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Source Sans 3",system-ui,-apple-system,Segoe UI,sans-serif;
+    font-size:1.0625rem;line-height:1.6;
+  }
+  h1,h2,h3{font-family:Archivo,system-ui,sans-serif;line-height:1.15;margin:0}
+  a{color:var(--deep)}
+  a:hover{text-decoration-thickness:2px}
+  :focus-visible{outline:3px solid var(--deep);outline-offset:3px;border-radius:4px}
+  .on-dark :focus-visible{outline-color:var(--yellow)}
+  .wrap{max-width:64rem;margin:0 auto;padding:0 1.15rem}
+
+  .skip{position:absolute;left:-9999px;top:0;background:var(--yellow);color:var(--ink);padding:.7rem 1rem;font-weight:700;z-index:50}
+  .skip:focus{left:.5rem;top:.5rem}
+
+  /* Hero */
+  .hero{background:var(--deep);color:#fff;padding:2.2rem 0 2.4rem;border-bottom:6px solid var(--yellow)}
+  .hero-grid{display:flex;flex-wrap:wrap;gap:1.75rem;align-items:center;justify-content:space-between}
+  .hero-logo{flex:1 1 20rem;min-width:0}
+  .hero-logo img{width:100%;max-width:26rem;height:auto;display:block;border-radius:10px}
+  .hero-qr{flex:0 0 auto;text-align:center}
+  .hero-qr img{width:11rem;height:11rem;display:block;background:#fff;padding:.55rem;border-radius:10px}
+  .hero-qr .cap{font-size:.9rem;margin-top:.55rem;color:var(--yellow);font-weight:600;letter-spacing:.02em}
+  .hero p.meta{margin:1.4rem 0 0;font-size:1.1rem;color:#fff}
+  .hero p.meta strong{color:var(--yellow)}
+
+  /* Nav */
+  nav.days{position:sticky;top:0;z-index:30;background:var(--deep);border-bottom:2px solid var(--green)}
+  nav.days ul{list-style:none;display:flex;gap:.4rem;margin:0;padding:.5rem 1.15rem;max-width:64rem;margin:0 auto;flex-wrap:wrap}
+  nav.days a{
+    display:block;color:#fff;text-decoration:none;font-family:Archivo,sans-serif;font-weight:700;
+    padding:.55rem .95rem;border-radius:999px;font-size:1rem;border:2px solid transparent;
+  }
+  nav.days a:hover{background:#0F5426;text-decoration:underline}
+  nav.days a[aria-current="true"]{background:var(--yellow);color:var(--ink)}
+
+  main{padding:2.25rem 0 4rem}
+  .day{scroll-margin-top:4.5rem;margin-bottom:3rem}
+  .day-head{border-left:8px solid var(--green);padding:.15rem 0 .15rem 1rem;margin-bottom:.9rem}
+  .day-head h2{font-size:clamp(1.7rem,5vw,2.4rem);color:var(--deep);letter-spacing:-.01em}
+  .day-head .where{color:var(--muted);font-weight:600;margin-top:.35rem}
+  .day-head .where a{font-weight:700}
+
+  .tools{display:flex;gap:.5rem;margin:.9rem 0 1.25rem;flex-wrap:wrap}
+  .tools button{
+    font-family:Archivo,sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;
+    background:var(--panel);color:var(--deep);border:2px solid var(--deep);
+    padding:.45rem .85rem;border-radius:999px;
+  }
+  .tools button:hover{background:var(--deep);color:#fff}
+
+  .session{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:.8rem;overflow:hidden}
+  .session[open]{border-color:var(--green);box-shadow:0 2px 0 var(--green)}
+  summary{
+    list-style:none;cursor:pointer;padding:1rem 1.1rem;display:flex;gap:.9rem;align-items:flex-start;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary:hover{background:#F4F7F0}
+  .sign{
+    flex:0 0 auto;width:2rem;height:2rem;border-radius:8px;background:var(--deep);color:var(--yellow);
+    font-family:Archivo,sans-serif;font-weight:800;font-size:1.35rem;line-height:1.9rem;text-align:center;
+  }
+  .stitle{flex:1 1 auto;min-width:0}
+  .time{display:block;font-family:Archivo,sans-serif;font-weight:700;color:var(--deep);font-size:.95rem;letter-spacing:.02em;text-transform:uppercase}
+  .name{display:block;font-family:Archivo,sans-serif;font-weight:700;font-size:1.15rem;margin-top:.15rem}
+  .tag{display:inline-block;margin-top:.4rem;font-size:.82rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+       background:#EFF3EA;color:var(--deep);border:1px solid var(--line);border-radius:999px;padding:.1rem .6rem}
+  .body{padding:0 1.1rem 1.2rem 4rem}
+  @media (max-width:34rem){.body{padding-left:1.1rem}}
+  .body p{margin:.5rem 0}
+  .who{color:var(--muted)}
+  .who em{font-style:normal;font-weight:700;color:var(--ink)}
+
+  .opt{border-top:1px solid var(--line);padding-top:.85rem;margin-top:.85rem}
+  .opt:first-child{border-top:0;padding-top:0;margin-top:0}
+  .opt h3{font-size:1.02rem;color:var(--deep)}
+  .link{
+    display:inline-block;margin-top:.45rem;font-weight:700;text-decoration:none;
+    background:var(--deep);color:#fff;padding:.4rem .8rem;border-radius:8px;font-size:.95rem
+  }
+  .link:hover{background:#0F5426;text-decoration:underline}
+  .note{background:#F4F7F0;border-left:5px solid var(--green);padding:.85rem 1rem;border-radius:0 10px 10px 0;margin-top:1.25rem;color:var(--muted)}
+  .note strong{color:var(--ink)}
+  footer{background:var(--deep);color:#fff;padding:1.6rem 0;font-size:.95rem}
+  footer a{color:var(--yellow)}
+</style>
+</head>
+<body>
+<a class="skip" href="#day1">Skip to the agenda</a>
+
+<header class="hero on-dark">
+  <div class="wrap hero-grid">
+    <div class="hero-logo">
+      <img src="logo.png" alt="Putting the I in AI — SLC Tutor Training Day 2026">
+    </div>
+    <div class="hero-qr" id="qrBlock">
+      <img src="qr.png" alt="QR code linking to this agenda page" onerror="document.getElementById('qrBlock').hidden=true">
+      <p class="cap">Scan to open this agenda</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="meta"><strong>Day 1:</strong> Tuesday, August 11, 2026 · 9:30 am – 4:30 pm · Lake Worth campus, CE119<br>
+    <strong>Day 2:</strong> Wednesday, August 12, 2026 · 9:00 am – 5:00 pm · Microsoft Teams</p>
+  </div>
+</header>
+
+<nav class="days on-dark" aria-label="Jump to a day">
+  <ul>
+    <li><a href="#day1">Day 1 — Aug 11</a></li>
+    <li><a href="#day2">Day 2 — Aug 12</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="wrap">
+
+  <!-- ================= DAY 1 ================= -->
+  <section id="day1" class="day" aria-labelledby="day1-h" tabindex="-1">
+    <div class="day-head">
+      <h2 id="day1-h">Day 1 — Tuesday, August 11</h2>
+      <p class="where">In person · Lake Worth campus, CE119 · 9:30 am – 4:30 pm</p>
+    </div>
+
+    <div class="tools">
+      <button type="button" data-expand="day1">Expand all</button>
+      <button type="button" data-collapse="day1">Collapse all</button>
+    </div>
+
+    <details class="session">
+      <summary><span class="sign" aria-hidden="true">+</span><span class="stitle">
+        <span class="time">9:30 – 10:00 am</span>
+        <span class="name">Welcome, Special Guests, and Networking</span>
+        <span class="tag">CE119</span></span></summary>
+      <div class="body">
+        <p>Sign in through Workday.</p>
+        <p class="who">“Welcome” by <em>Jennifer Johnson</em>, SLC Director, with Academic Affairs leadership.</p>
+      </div>
+    </details>
+
+    <details class="session">
+      <summary><span class="sign" aria-hidden="true">+</span><span class="stitle">
+        <span class="time">10:00 – 10:45 am · Session 1</span>
+        <span class="name">AI Kick-Off Discussion</span>
+        <span class="tag">CE119</span></span></summary>
+      <div class="body">
+        <p class="who">Presented by <em>Jesse Rogers</em> and <em>Dr. Kim Copeland</em>.</p>
+      </div>
+    </details>
+
+    <details class="session">
+      <summary><span class="sign" aria-hidden="true">+</span><span class="stitle">
+        <span class="time">11:00 am – 12:30 pm · Breakout</span>
+        <span class="name">Choose one session</span>
+        <span class="tag">Pre-registration required</span></span></summary>
+      <div class="body">
+        <div class="opt">
+          <h3>BS Detector Toolkit</h3>
+          <p class="who">Presented by <em>Ivan Heerdegen</em> · CE201</p>
+        </div>
+        <div class="opt">
+          <h3>Your Tutoring Philosophy in the Age of AI</h3>
+          <p class="who">Presented by <em>Dr. Kim Copeland</em> and <em>Christine Kassover</em> · CE119</p>
+        </div>
+        <div class="opt">
+          <h3>Pass Go: Collecting Tutor Tips</h3>
+          <p class="who">Presented by <em>Lauren Do Nascimento</em> and <em>Pamela Smith</em> · CE202</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="session">
+      <summary><span class="sign" aria-hidden="true">+</span><span class="stitle">
+        <span class="time">12:30 – 1:30 pm</span>
+        <span class="name">Lunch</span>
+        <span class="tag">CE118 &amp; CE119</span></span></summary>
+      <div class="body">
+        <p>Lunch is provided.</p>
+      </div>
+    </details>
+
+    <details class="session">
+      <summary><span class="sign" aria-hidden="true">+</span><span class="stitle">
+        <span class="time">1:30 – 2:45 pm · Session 2</span>
+        <span class="name">Enhancing Learning Through Accessible Tutoring</span>
+        <span class="tag">CE119</span></span></summary>
+      <div class="body">
+        <p class="who">Presented by <em>Richard Hunter</em>.</p>
+      </div>
+    </details>
+
+    <details class="session">
+      <summary><span class="sign" aria-hidden="true">+</span><span class="stitle">
+        <span class="time">3:00 – 4:30 pm · Session 3</span>
+        <span class="name">Multiple Intelligences</span>
+        <span class="tag">CE119</span></span></summary>
+      <div class="body">
+        <p class="who">Presented by <em>Barbie Edgar</em>.</p>
+      </div>
+    </details>
+
+    <p class="note"><strong>Before you leave:</strong> sign out through Workday (if applicable). Day 2 meets on Teams.</p>
+  </section>
+
+  <!-- ================= DAY 2 ================= -->
+  <section id="day2" class="day" aria-labelledby="day2-h" tabindex="-1">
+    <div class="day-head">
+      <h2 id="day2-h">Day 2 — Wednesday, August 12</h2>
+      <p class="where">Microsoft Teams · 9:00 am – 5:00 pm · <a href="https://teams.microsoft.com/meet/263380799332304?p=xOoDfX4f0SsEkbgfEa">Main Teams meeting link</a></p>
+    </div>
+
+    <div class="tools">
+      <button type="button" data-expand="day2">Expand all</button>
+      <button type="button" data-collapse="day2">Collapse all</button>
+    </div>
+
+    <details class="session">
+      <summary><span class="sign" aria-hidden="true">+</span><span class="stitle">
+        <span class="time">9:00 – 9:30 am</span>
+        <span class="name">Welcome and Tech Overview</span>
+        <span class="tag">Main Teams link</span></span></summary>
+      <div class="body">
+        <p>Sign in through Workday, register for breakout sessions, and walk through the day’s schedule.</p>
+        <a class="link" href="https://teams.microsoft.com/meet/263380799332304?p=xOoDfX4f0SsEkbgfEa">Join on Teams</a>
+      </div>
+    </details>
+
+    <details class="session">
+      <summary><span class="sign" aria-hidden="true">+</span><span class="stitle">
+        <span class="time">9:30 – 10:00 am · Breakout 1</span>
+        <span class="name">Choose one session</span></span></summary>
+      <div class="body">
+        <div class="opt">
+          <h3>LLCs Only — Challenges and Celebrations Peer Conversation</h3>
+          <p class="who">Facilitated by <em>Dr. Roberto Carballoso</em></p>
+          <a class="link" href="https://teams.microsoft.com/meet/284934942892213?p=eUj6tMV5ruzrxZUI2q">Join on Teams</a>
+        </div>
+        <div class="opt">
+          <h3>Grammarly Gabfest</h3>
+          <p class="who">Presented by <em>Christopher James</em></p>
+          <a class="link" href="https://teams.microsoft.com/meet/231527415512896?p=Mu4W4QDwyTUGcIoHrE">Join on Teams</a>
+        </div>
+        <div class="opt">
+          <h3>Tutoring Beyond the Grade: Modeling Self-Directed Studying through AI</h3>
+          <p class="who">Presented by <em>Christine Kassover</em> and <em>Liz Silva</em></p>
+          <a class="link" href="https://teams.microsoft.com/meet/222427534614008?p=TUlEeDujnHuoUFi4Vd">Join on Teams</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="session">
+      <summary><span class="sign" aria-hidden="true">+</span><span class="stitle">
+        <span class="time">10:10 – 11:00 am · Breakout 2</span>
+        <span class="name">Choose one session</span></span></summary>
+      <div class="body">
+        <div class="opt">
+          <h3>Math Tutor Training: Fundamental Counting Principles and Factorials</h3>
+          <p class="who">Presented by <em>Ewa Neginsky</em></p>
+          <a class="link" href="https://teams.microsoft.com/meet/2291683263930?p=EathS1AF7eI0q66a6x">Join on Teams</a>
+        </div>
+        <div class="opt">
+          <h3>Learning to Learn: Evidence-Based Strategies for Academic Success</h3>
+          <p class="who">Presented by <em>Jesse Rogers</em></p>
+          <a class="link" href="https://teams.microsoft.com/meet/233030849270028?p=Dc1h2w3UCHItDaIAyt">Join on Teams</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="session">
+      <summary><span class="sign" aria-hidden="true">+</span><span class="stitle">
+        <span class="time">11:10 am – 12:00 pm</span>
+        <span class="name">Student Panel</span>
+        <span class="tag">Main Teams link</span></span></summary>
+      <div class="body">
+        <p class="who">Led by <em>Dr. Kim Copeland</em>.</p>
+        <a class="link" href="https://teams.microsoft.com/meet/263380799332304?p=xOoDfX4f0SsEkbgfEa">Join on Teams</a>
+      </div>
+    </details>
+
+    <details class="session">
+      <summary><span class="sign" aria-hidden="true">+</span><span class="stitle">
+        <span class="time">12:00 – 1:00 pm</span>
+        <span class="name">Lunch on your own</span></span></summary>
+      <div class="body">
+        <p>Be in the next session on time for full credit.</p>
+      </div>
+    </details>
+
+    <details class="session">
+      <summary><span class="sign" aria-hidden="true">+</span><span class="stitle">
+        <span class="time">1:00 – 2:20 pm · Breakout 3</span>
+        <span class="name">Choose one session</span></span></summary>
+      <div class="body">
+        <div class="opt">
+          <h3>Copilot Challenges: Building Practical AI Skills Through Hands-On Problem Solving</h3>
+          <p class="who">Presented by <em>Jesse Rogers</em></p>
+          <a class="link" href="https://teams.microsoft.com/meet/214682561544435?p=SAMD8HWcrhfqlogIAv">Join on Teams</a>
+        </div>
+        <div class="opt">
+          <h3>The Conversations Students Don’t Have with AI: What Tutors Hear Beyond the Words</h3>
+          <p class="who">Presented by <em>Christine Kassover</em> and <em>Dr. Kim Copeland</em></p>
+          <a class="link" href="https://teams.microsoft.com/meet/241120190009741?p=eHAOOK0v8QeojBY6tt">Join on Teams</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="session">
+      <summary><span class="sign" aria-hidden="true">+</span><span class="stitle">
+        <span class="time">2:30 – 3:30 pm · Breakout 4</span>
+        <span class="name">Choose one session</span></span></summary>
+      <div class="body">
+        <div class="opt">
+          <h3>Administrative Assistants Only — A Roundtable Discussion of Best Practices</h3>
+          <p class="who">Facilitated by <em>Barbie Edgar</em> · Link provided to attendees</p>
+        </div>
+        <div class="opt">
+          <h3>Advancing Student and Team Success with Navigate360</h3>
+          <p class="who">Presented by <em>Jennifer Johnson</em></p>
+          <a class="link" href="https://teams.microsoft.com/meet/296088317598907?p=xXJzD0b5jmOfyhMJyt">Join on Teams</a>
+        </div>
+        <div class="opt">
+          <h3>Time Management for Success</h3>
+          <p class="who">Presented by <em>Mara Abrams</em></p>
+          <a class="link" href="https://teams.microsoft.com/meet/219638875110864?p=ZMcWTD9aJ0zHEjevy0">Join on Teams</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="session">
+      <summary><span class="sign" aria-hidden="true">+</span><span class="stitle">
+        <span class="time">3:45 – 4:45 pm</span>
+        <span class="name">AI Discussion Panel</span>
+        <span class="tag">Main Teams link</span></span></summary>
+      <div class="body">
+        <p class="who">Presented by the <em>SLC AI Workgroup</em>.</p>
+        <a class="link" href="https://teams.microsoft.com/meet/263380799332304?p=xOoDfX4f0SsEkbgfEa">Join on Teams</a>
+      </div>
+    </details>
+
+    <details class="session">
+      <summary><span class="sign" aria-hidden="true">+</span><span class="stitle">
+        <span class="time">4:45 – 5:00 pm</span>
+        <span class="name">Closing and Attendance</span></span></summary>
+      <div class="body">
+        <p>Sign out through Workday.</p>
+      </div>
+    </details>
+  </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>SLC Tutor Training Retreat 2026 · Student Learning Center</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // + / − indicator
+  document.querySelectorAll('details.session').forEach(function(d){
+    d.addEventListener('toggle', function(){
+      d.querySelector('.sign').textContent = d.open ? '\u2212' : '+';
+    });
+  });
+  // Expand / collapse all, per day
+  document.querySelectorAll('[data-expand],[data-collapse]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.dataset.expand || btn.dataset.collapse;
+      var open = !!btn.dataset.expand;
+      document.querySelectorAll('#' + id + ' details.session').forEach(function(d){ d.open = open; });
+    });
+  });
+  // Mark the day currently in view in the navbar
+  var links = {day1:document.querySelector('nav.days a[href="#day1"]'), day2:document.querySelector('nav.days a[href="#day2"]')};
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        Object.keys(links).forEach(function(k){ links[k].removeAttribute('aria-current'); });
+        if(links[e.target.id]) links[e.target.id].setAttribute('aria-current','true');
+      }
+    });
+  }, {rootMargin:'-20% 0px -70% 0px'});
+  document.querySelectorAll('section.day').forEach(function(s){ obs.observe(s); });
+})();
+</script>
+</body>
+</html>
